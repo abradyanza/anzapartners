@@ -47,14 +47,34 @@ export default function ContactForm() {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    // No backend yet — log and surface a success toast. Wire up Formspree or
-    // a similar provider here when ready.
-    console.log("Contact form submission:", form);
-    await new Promise((r) => setTimeout(r, 600));
-    setSubmitting(false);
-    setForm(INITIAL_STATE);
-    setToast("Thank you. We'll be in touch shortly.");
-    setTimeout(() => setToast(null), 5000);
+
+    try {
+      const res = await fetch("https://formspree.io/f/meewkdgn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          company: form.company,
+          website: form.website,
+          role: form.role,
+          message: form.message,
+          _replyto: form.email,
+          _subject: `New inquiry from ${form.firstName} ${form.lastName}`,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
+      setForm(INITIAL_STATE);
+      setToast("Thank you. We'll be in touch shortly.");
+    } catch {
+      setToast("Something went wrong. Please email info@anzapartners.com directly.");
+    } finally {
+      setSubmitting(false);
+      setTimeout(() => setToast(null), 5000);
+    }
   };
 
   return (
