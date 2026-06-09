@@ -10,7 +10,12 @@ export default function TeamCard({ member }: TeamCardProps) {
   return (
     <article className="border-t border-slate-200 pt-10">
       <div className="flex flex-col sm:flex-row sm:items-start gap-8">
-        <Headshot initials={member.initials} size="lg" />
+        <Headshot
+          initials={member.initials}
+          src={member.headshot}
+          name={member.name}
+          size="lg"
+        />
 
         <div className="flex-1">
           <div className="flex items-start justify-between gap-4">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Logo from "./Logo";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -51,14 +52,14 @@ export default function Navbar() {
           : "bg-transparent text-white"
       }`}
     >
-      <div className="container-x flex h-20 items-center justify-between">
-        <Link
-          href="/"
-          className="font-serif text-lg md:text-xl tracking-[0.18em] uppercase"
-          aria-label="Anza Partners — Home"
-        >
-          Anza Partners
-        </Link>
+      <div className="container-x flex h-24 items-center justify-between">
+        <Logo
+          asLink
+          ariaLabel="Anza Partners — Home"
+          size="md"
+          priority
+          variant={solid ? "dark" : "light"}
+        />
 
         <nav className="hidden md:flex items-center gap-10" aria-label="Primary">
           {NAV_LINKS.map((link) => {
@@ -120,7 +121,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden fixed inset-y-0 right-0 top-20 w-full max-w-sm bg-navy text-white border-l border-white/10"
+            className="md:hidden fixed inset-y-0 right-0 top-24 w-full max-w-sm bg-navy text-white border-l border-white/10"
           >
             <nav className="flex flex-col px-8 py-10 gap-2" aria-label="Mobile">
               {NAV_LINKS.map((link, i) => (

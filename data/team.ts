@@ -4,6 +4,11 @@ export interface TeamMember {
   title: string;
   linkedin: string;
   bio: string[];
+  /**
+   * Path relative to /public. Drop the matching file at this path and it
+   * renders automatically; if the file is missing, the initials fall back in.
+   */
+  headshot?: string;
 }
 
 export const FOUNDERS: TeamMember[] = [
@@ -12,6 +17,7 @@ export const FOUNDERS: TeamMember[] = [
     initials: "ZY",
     title: "Co-Founder",
     linkedin: "https://www.linkedin.com/in/zyudkoff/",
+    headshot: "/headshots/zach-yudkoff.avif",
     bio: [
       "Prior to founding Anza, Zach was an initial investment team member of an upper-middle market private equity firm, Ethos Capital, which invests primarily in information services businesses. In this role, Zach focused on acquisitions and management of a multi-billion dollar portfolio of private technology and digital infrastructure businesses.",
       "Prior to Ethos Capital, Zach spent time advising technology companies on mergers and acquisitions at Moelis & Company, a leading global M&A advisory firm. While primarily focused on M&A advisory, Zach also spent time advising on capital raises and SPAC transactions.",
@@ -24,6 +30,7 @@ export const FOUNDERS: TeamMember[] = [
     initials: "AB",
     title: "Co-Founder",
     linkedin: "https://www.linkedin.com/in/andrewleebrady/",
+    headshot: "/headshots/andrew-brady.avif",
     bio: [
       "Prior to founding Anza, Andrew led the software / technology fundamental equity investing efforts for Squarepoint Capital, a global multi-strategy asset manager managing ~$20 billion. In this role, Andrew was responsible for an investment portfolio of private and public companies and extensively engaged with management teams of many leading B2B companies.",
       "Prior to Squarepoint, Andrew worked for Bain Capital, one of the world's largest value-add private company investors, which manages $185 billion of assets. At Bain, Andrew conducted a number of private market acquisitions of software and technology businesses.",
@@ -39,6 +46,7 @@ export const ADVISORS: TeamMember[] = [
     initials: "MD",
     title: "Operating Partner",
     linkedin: "https://www.linkedin.com/in/michael-donovan-b3663a23b/",
+    headshot: "/headshots/michael-donovan.avif",
     bio: [
       "Founder, Former CEO, and Executive Chairman of Donovan Data Systems (now 'Mediaocean' following a merger with MediaBank), a leading advertising software and services firm with 1,200+ employees globally.",
       "Michael brings decades of Founder and C-Suite experience in the Software & Technology industry and is a key part of Anza's strategic advisory capabilities. Mediaocean was sold to Vista Equity Partners in 2015 and has since been sold to CVC and TA Associates.",
@@ -51,6 +59,7 @@ export const ADVISORS: TeamMember[] = [
     initials: "GM",
     title: "Operating Partner",
     linkedin: "https://www.linkedin.com/in/greggmonastiero/",
+    headshot: "/headshots/gregg-monastiero.avif",
     bio: [
       "Seasoned executive with 3+ decades of experience in a number of B2B and B2C industries – having held key senior leadership positions (President, CRO, etc.) at firms such as: Baan, SSA Global, Infor, JDA, TATA Digital, SumTotal, Symphony EYC, and Mi9 Retail. In these roles, Gregg's work has resulted in exponential revenue generation in excess of $2 billion.",
       "In addition, Gregg has extensive experience in driving value creation initiatives for leading investment firms such as General Atlantic, HGGC, Cerberus Capital, and Vista Equity Partners.",
@@ -63,6 +72,7 @@ export const ADVISORS: TeamMember[] = [
     initials: "RY",
     title: "Senior Advisor",
     linkedin: "https://www.linkedin.com/in/royce-yudkoff-50b05a9/",
+    headshot: "/headshots/royce-yudkoff.avif",
     bio: [
       "Founder and Former Managing Partner of ABRY Partners, a leading private equity investment firm founded in the 1980s with $17 billion of current assets under management. ABRY focuses on media, communications, and information services companies and brings extensive operational expertise to its companies to drive growth and value creation. Under Royce's leadership and to date, ABRY has managed and operated 550+ leading B2B businesses, having invested $90 billion into these firms.",
       "After retiring from day-to-day management of ABRY, Royce joined the faculty of the Harvard Business School, where he teaches courses on the financial management of small firms and small business acquisitions.",
@@ -75,6 +85,7 @@ export const ADVISORS: TeamMember[] = [
     initials: "MP",
     title: "Senior Advisor",
     linkedin: "https://www.linkedin.com/in/matthew-perelman-6b289148/",
+    headshot: "/headshots/matt-perelman.avif",
     bio: [
       "Founder and Current Managing Partner of Garnett Station Partners, a leading consumer, retail, and services investment firm with $2 billion+ assets under management, which is focused on value creation for founder-owned businesses. Since 2013, GSP has invested behind and operated 30+ middle-market businesses as majority owners.",
       "Prior to founding Garnett Station, Matt worked at L Catterton Partners, a leading consumer and retail focused private equity firm with over $30 billion of capital under management. Before L Catterton, Matt worked in the Investment Banking Division of Citigroup, where he executed a number of M&A and Leveraged Finance transactions.",

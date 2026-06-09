@@ -18,7 +18,12 @@ export default function AdvisorCard({ member }: AdvisorCardProps) {
     <article className="bg-white border-t border-steel">
       <div className="p-8 md:p-10 flex flex-col gap-6">
         <div className="flex items-start gap-6">
-          <Headshot initials={member.initials} size="md" />
+          <Headshot
+            initials={member.initials}
+            src={member.headshot}
+            name={member.name}
+            size="md"
+          />
           <div className="flex-1 min-w-0">
             <h3 className="font-serif text-2xl md:text-3xl text-navy leading-tight">
               {member.name}
