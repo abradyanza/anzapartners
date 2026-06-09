@@ -45,6 +45,7 @@ export default function Navbar() {
   const solid = !transparentEligible || scrolled;
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         solid
@@ -113,36 +114,52 @@ export default function Navbar() {
         </button>
       </div>
 
+    </header>
+
       <AnimatePresence>
         {open && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden fixed inset-y-0 right-0 top-24 w-full max-w-sm bg-navy text-white border-l border-white/10"
-          >
-            <nav className="flex flex-col px-8 py-10 gap-2" aria-label="Mobile">
-              {NAV_LINKS.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + i * 0.07, duration: 0.4 }}
-                >
-                  <Link
-                    href={link.href}
-                    className="block py-4 text-2xl font-serif border-b border-white/10"
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              key="mobile-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden fixed inset-0 top-24 z-[60] bg-black/40"
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+            />
+            {/* Slide-in drawer */}
+            <motion.div
+              key="mobile-menu"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden fixed inset-y-0 right-0 top-24 z-[70] w-full max-w-sm bg-navy text-white border-l border-white/10"
+            >
+              <nav className="flex flex-col px-8 py-10 gap-2" aria-label="Mobile">
+                {NAV_LINKS.map((link, i) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.07, duration: 0.4 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-          </motion.div>
+                    <Link
+                      href={link.href}
+                      className="block py-4 text-2xl font-serif border-b border-white/10"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
