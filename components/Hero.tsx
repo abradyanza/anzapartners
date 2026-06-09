@@ -12,9 +12,9 @@ interface HeroProps {
 }
 
 const sizeClasses: Record<NonNullable<HeroProps["size"]>, string> = {
-  full: "min-h-screen",
-  medium: "min-h-[60vh] md:min-h-[50vh]",
-  short: "min-h-[55vh] md:min-h-[40vh]",
+  full: "min-h-dvh",
+  medium: "min-h-[60dvh] md:min-h-[50dvh]",
+  short: "min-h-[55dvh] md:min-h-[40dvh]",
 };
 
 export default function Hero({
