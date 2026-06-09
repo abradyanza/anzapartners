@@ -9,14 +9,14 @@ interface HeadshotProps {
 
 const sizes = {
   lg: {
-    box: "w-40 h-40 md:w-48 md:h-48",
-    text: "text-4xl md:text-5xl",
-    px: 192,
+    box: "w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48",
+    text: "text-3xl sm:text-4xl md:text-5xl",
+    imgSizes: "(min-width: 768px) 192px, (min-width: 640px) 160px, 128px",
   },
   md: {
-    box: "w-28 h-28 md:w-32 md:h-32",
-    text: "text-2xl md:text-3xl",
-    px: 128,
+    box: "w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32",
+    text: "text-xl sm:text-2xl md:text-3xl",
+    imgSizes: "(min-width: 768px) 128px, (min-width: 640px) 112px, 80px",
   },
 };
 
@@ -30,7 +30,7 @@ export default function Headshot({ initials, src, name, size = "lg" }: HeadshotP
           src={src}
           alt={name ? `Portrait of ${name}` : ""}
           fill
-          sizes={`${s.px}px`}
+          sizes={s.imgSizes}
           className="object-cover"
           priority={false}
         />

@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-navy text-silver">
       <div className="container-x py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-          <Logo variant="light" size="md" />
+          <Logo variant="light" size="sm" />
           <a
             href="mailto:info@anzapartners.com"
             className="text-sm text-silver hover:text-white transition-colors"

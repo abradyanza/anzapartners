@@ -56,7 +56,7 @@ export default function Navbar() {
         <Logo
           asLink
           ariaLabel="Anza Partners — Home"
-          size="md"
+          size="sm"
           priority
           variant={solid ? "dark" : "light"}
         />

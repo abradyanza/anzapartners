@@ -17,10 +17,10 @@ export default function TeamCard({ member }: TeamCardProps) {
           size="lg"
         />
 
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-4">
-            <div>
-              <h3 className="font-serif text-3xl md:text-4xl text-navy leading-tight">
+            <div className="min-w-0">
+              <h3 className="font-serif text-3xl md:text-4xl text-navy leading-tight break-words">
                 {member.name}
               </h3>
               <p className="mt-1 text-steel text-sm tracking-wide uppercase">

@@ -14,15 +14,28 @@ interface LogoProps {
   priority?: boolean;
 }
 
-// Native aspect ratio of /public/anza-logo.png: 1414 x 1014 (~1.394:1).
-const LOGO_W = 1414;
-const LOGO_H = 1014;
+// Native aspect ratio of /public/anza-logo-transparent.png: 1414 x 1014 (~1.394:1).
+// We use a container div with fixed dimensions and `relative` positioning,
+// then fill it with next/image + object-contain. This avoids the quirks of
+// next/image width/height classes fighting the intrinsic size on mobile.
 
-const sizeMap: Record<LogoSize, string> = {
-  sm: "h-10 md:h-11 w-auto",
-  md: "h-14 md:h-16 w-auto",
-  lg: "h-24 md:h-28 w-auto",
-  xl: "h-40 md:h-48 w-auto",
+const sizeMap: Record<LogoSize, { container: string; imgSizes: string }> = {
+  sm: {
+    container: "w-[100px] h-[72px] md:w-[120px] md:h-[86px]",
+    imgSizes: "(min-width: 768px) 120px, 100px",
+  },
+  md: {
+    container: "w-[140px] h-[100px] md:w-[160px] md:h-[115px]",
+    imgSizes: "(min-width: 768px) 160px, 140px",
+  },
+  lg: {
+    container: "w-[240px] h-[172px] md:w-[280px] md:h-[201px]",
+    imgSizes: "(min-width: 768px) 280px, 240px",
+  },
+  xl: {
+    container: "w-[360px] h-[258px] md:w-[440px] md:h-[316px]",
+    imgSizes: "(min-width: 768px) 440px, 360px",
+  },
 };
 
 export default function Logo({
@@ -34,19 +47,20 @@ export default function Logo({
   className = "",
   priority = false,
 }: LogoProps) {
-  // "light" variant collapses the logo to a white silhouette for use on
-  // dark backgrounds (navy hero, footer). "dark" renders it as-is.
   const filterClass = variant === "light" ? "brightness-0 invert" : "";
+  const s = sizeMap[size];
 
   const mark = (
-    <Image
-      src="/anza-logo-transparent.png"
-      alt={ariaLabel}
-      width={LOGO_W}
-      height={LOGO_H}
-      className={`${sizeMap[size]} ${filterClass} ${className}`}
-      priority={priority}
-    />
+    <div className={`relative flex-shrink-0 ${s.container} ${className}`}>
+      <Image
+        src="/anza-logo-transparent.png"
+        alt={ariaLabel}
+        fill
+        sizes={s.imgSizes}
+        className={`object-contain object-left ${filterClass}`}
+        priority={priority}
+      />
+    </div>
   );
 
   if (asLink) {
