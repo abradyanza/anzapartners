@@ -14,10 +14,6 @@ export default function Footer() {
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
           <div className="max-w-xs">
             <Logo variant="light" size="sm" />
-            <p className="mt-6 text-sm leading-relaxed text-ink-subtle">
-              A private investment firm partnering with founder-owned companies
-              in the lower middle market.
-            </p>
           </div>
 
           <div className="flex flex-col gap-10 sm:flex-row sm:gap-20">
@@ -42,16 +38,14 @@ export default function Footer() {
               >
                 info@anzapartners.com
               </a>
+              <span className="text-sm text-ink-subtle">New York, NY</span>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-line/70 pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 border-t border-line/70 pt-8">
           <p className="text-xs text-ink-faint">
             © {new Date().getFullYear()} Anza Partners. All rights reserved.
-          </p>
-          <p className="text-xs text-ink-faint">
-            Lower middle market · Growth-focused
           </p>
         </div>
       </div>

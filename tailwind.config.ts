@@ -8,15 +8,15 @@ const config: Config = {
         // ── Cinematic dark system (navy-tinted near-black canvas + surface ladder).
         // Lineage of the original brand navy, pushed to a deep cinematic ink so the
         // single accent and the type carry the page. Never pure #000 / #fff.
-        canvas: "#06080F",
+        canvas: "#0C111B",
         surface: {
-          DEFAULT: "#0B0E17",
-          2: "#11151F",
-          3: "#161B27",
+          DEFAULT: "#151B27",
+          2: "#1D2433",
+          3: "#27303F",
         },
         line: {
-          DEFAULT: "#1C2130",
-          strong: "#2A3043",
+          DEFAULT: "#2B3340",
+          strong: "#3C4658",
         },
         ink: {
           DEFAULT: "#EDF0F6",

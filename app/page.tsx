@@ -2,7 +2,6 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/motion/Reveal";
 import MagneticButton from "@/components/motion/MagneticButton";
-import Marquee from "@/components/Marquee";
 
 const FOCUS_AREAS = [
   {
@@ -15,13 +14,19 @@ const FOCUS_AREAS = [
     index: "02",
     title: "Tech-Enabled Services",
     description:
-      "Service businesses using proprietary technology to deliver differentiated value at scale.",
+      "Service businesses using technology to deliver differentiated value at scale.",
   },
   {
     index: "03",
     title: "Business Services",
     description:
       "Established services firms with durable relationships and clear room for operational gains.",
+  },
+  {
+    index: "04",
+    title: "Fleet-Based Services",
+    description:
+      "Field and fleet-driven operations with recurring service revenue, route density, and durable local demand.",
   },
 ];
 
@@ -41,21 +46,11 @@ const INVESTMENT_CRITERIA = [
     title: "Defensible End Market",
     body: "Enduring verticals that exhibit stability, acyclicality, and durable go-forward growth potential.",
   },
-];
-
-// Real institutions the Anza team has built, advised, and invested across —
-// a truthful pedigree ribbon drawn from the partners' and advisors' careers.
-const PEDIGREE = [
-  "Bain Capital",
-  "Moelis & Company",
-  "ABRY Partners",
-  "Garnett Station Partners",
-  "L Catterton",
-  "Squarepoint Capital",
-  "Vista Equity Partners",
-  "Harvard Business School",
-  "Citigroup",
-  "Ethos Capital",
+  {
+    number: "04",
+    title: "Strong, High-Integrity Teams",
+    body: "Honest, capable management teams with the character, judgment, and ambition to build enduring businesses.",
+  },
 ];
 
 export default function HomePage() {
@@ -97,7 +92,8 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="display-2 text-ink">
-                We back the businesses that quietly run their industries.
+                We partner with the companies that form the backbone of their
+                industries.
               </h2>
             </Reveal>
           </div>
@@ -112,10 +108,10 @@ export default function HomePage() {
                   people who built them.
                 </p>
                 <p>
-                  A seasoned committee of operators and advisors works alongside
-                  management to build and execute value-creation plans — drawing
-                  on decades of private-company investing across technology and
-                  services.
+                  We maintain a seasoned committee of operators and advisors to
+                  work alongside management in building and executing on
+                  value-creation plans — drawing on decades of experience
+                  building leading companies across technology and services.
                 </p>
               </div>
               <Link
@@ -132,34 +128,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Pedigree ribbon — the one marquee on the page. */}
-      <section className="border-y border-line/70 bg-surface/40 py-12">
-        <div className="container-x">
-          <Reveal>
-            <p className="meta mb-7 text-ink-faint">
-              Our team&rsquo;s experience spans
-            </p>
-          </Reveal>
-        </div>
-        <Marquee items={PEDIGREE} />
-      </section>
-
       {/* Focus areas — surface panels (a distinct family from the criteria list). */}
-      <section className="section-y">
+      <section className="section-y border-t border-line/70">
         <div className="container-x">
           <Reveal>
             <h2 className="display-2 max-w-2xl text-ink">
-              Three sectors where our expertise compounds.
+              Sectors where our expertise compounds.
             </h2>
           </Reveal>
 
-          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             {FOCUS_AREAS.map((area, i) => (
-              <Reveal key={area.title} delay={0.08 * i}>
+              <Reveal key={area.title} delay={0.06 * i}>
                 <div className="group relative h-full overflow-hidden rounded-xl border border-line bg-surface p-8 transition-colors duration-300 hover:bg-surface-2">
                   <span
                     aria-hidden
-                    className="absolute right-5 top-4 font-mono text-sm text-ink-faint/60"
+                    className="absolute right-5 top-4 font-mono text-sm text-ink-faint/70"
                   >
                     {area.index}
                   </span>
@@ -172,15 +156,6 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={0.2}>
-            <p className="mt-12 max-w-4xl text-sm leading-relaxed text-ink-subtle">
-              <span className="text-ink-muted">Illustrative end markets — </span>
-              Government, Healthcare, Education, Professional Services, Farming
-              &amp; Agriculture, Real Estate &amp; Construction, Aerospace &amp;
-              Automotive, Transportation, Logistics.
-            </p>
-          </Reveal>
         </div>
       </section>
 
@@ -195,7 +170,7 @@ export default function HomePage() {
 
           <div className="mt-16">
             {INVESTMENT_CRITERIA.map((item, i) => (
-              <Reveal key={item.number} delay={0.06 * i}>
+              <Reveal key={item.number} delay={0.05 * i}>
                 <div className="grid grid-cols-1 gap-5 border-t border-line py-10 lg:grid-cols-12 lg:gap-10">
                   <div className="lg:col-span-3">
                     <span className="font-mono text-2xl text-accent">
@@ -216,12 +191,12 @@ export default function HomePage() {
       </section>
 
       {/* Closing — a single statement band. */}
-      <section className="section-y border-t border-line/70 bg-surface/40">
+      <section className="section-y border-t border-line/70 bg-surface/50">
         <div className="container-x">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="display-2 text-ink">
-                Building something worth backing?
+                Tell us what you&rsquo;re building.
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">
                 We partner with a small number of exceptional companies each
