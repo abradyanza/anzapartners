@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/motion/Reveal";
+import DrawLine from "@/components/motion/DrawLine";
 import TeamCard from "@/components/TeamCard";
 import AdvisorCard from "@/components/AdvisorCard";
 import { ADVISORS, FOUNDERS } from "@/data/team";
@@ -22,7 +23,8 @@ export default function TeamPage() {
       />
 
       {/* Founders */}
-      <section className="section-y border-t border-line/70">
+      <section className="section-y relative">
+        <DrawLine className="absolute inset-x-0 top-0" />
         <div className="container-x">
           <Reveal>
             <h2 className="display-2 text-ink">Founders</h2>
@@ -39,7 +41,8 @@ export default function TeamPage() {
       </section>
 
       {/* Operating Partners & Senior Advisors */}
-      <section className="section-y border-t border-line/70 bg-surface/40">
+      <section className="section-y relative bg-surface/40">
+        <DrawLine className="absolute inset-x-0 top-0" />
         <div className="container-x">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-5">

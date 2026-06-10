@@ -1,6 +1,7 @@
 import type { TeamMember } from "@/data/team";
 import Headshot from "./Headshot";
 import LinkedInIcon from "./LinkedInIcon";
+import DrawLine from "./motion/DrawLine";
 
 interface TeamCardProps {
   member: TeamMember;
@@ -8,7 +9,8 @@ interface TeamCardProps {
 
 export default function TeamCard({ member }: TeamCardProps) {
   return (
-    <article className="border-t border-line pt-10">
+    <article>
+      <DrawLine className="mb-10" />
       <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
         <Headshot
           initials={member.initials}

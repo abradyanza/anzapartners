@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/motion/Reveal";
+import DrawLine from "@/components/motion/DrawLine";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
@@ -19,7 +20,8 @@ export default function ContactPage() {
         subtext="Whether you're seeking a strategic partner to grow or considering a sale, we'd welcome the conversation."
       />
 
-      <section className="section-y border-t border-line/70">
+      <section className="section-y relative">
+        <DrawLine className="absolute inset-x-0 top-0" />
         <div className="container-x">
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-4">

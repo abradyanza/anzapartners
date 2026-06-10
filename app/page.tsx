@@ -2,6 +2,7 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import Reveal from "@/components/motion/Reveal";
 import MagneticButton from "@/components/motion/MagneticButton";
+import DrawLine from "@/components/motion/DrawLine";
 
 const FOCUS_AREAS = [
   {
@@ -128,7 +129,8 @@ export default function HomePage() {
       </section>
 
       {/* Focus areas — surface panels (a distinct family from the criteria list). */}
-      <section className="section-y border-t border-line/70">
+      <section className="section-y relative">
+        <DrawLine className="absolute inset-x-0 top-0" />
         <div className="container-x">
           <Reveal>
             <h2 className="display-2 max-w-2xl text-ink">
@@ -159,7 +161,8 @@ export default function HomePage() {
       </section>
 
       {/* Investment criteria — full-width editorial rows with mono numerals. */}
-      <section className="section-y border-t border-line/70">
+      <section className="section-y relative">
+        <DrawLine className="absolute inset-x-0 top-0" />
         <div className="container-x">
           <Reveal>
             <h2 className="display-2 max-w-2xl text-ink">
@@ -170,7 +173,8 @@ export default function HomePage() {
           <div className="mt-16">
             {INVESTMENT_CRITERIA.map((item, i) => (
               <Reveal key={item.number} delay={0.05 * i}>
-                <div className="grid grid-cols-1 gap-5 border-t border-line py-10 lg:grid-cols-12 lg:gap-10">
+                <DrawLine />
+                <div className="grid grid-cols-1 gap-5 py-10 lg:grid-cols-12 lg:gap-10">
                   <div className="lg:col-span-3">
                     <span className="font-mono text-2xl text-accent">
                       {item.number}
@@ -190,7 +194,8 @@ export default function HomePage() {
       </section>
 
       {/* Closing — a single statement band. */}
-      <section className="section-y border-t border-line/70 bg-surface/50">
+      <section className="section-y relative bg-surface/50">
+        <DrawLine className="absolute inset-x-0 top-0" />
         <div className="container-x">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
