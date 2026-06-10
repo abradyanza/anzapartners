@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { dmSans, playfair } from "@/lib/fonts";
+import { GeistSans, GeistMono } from "@/lib/fonts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
@@ -36,8 +36,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${playfair.variable}`}>
-      <body className="min-h-dvh flex flex-col">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="min-h-dvh flex flex-col bg-canvas text-ink antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

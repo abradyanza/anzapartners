@@ -6,3 +6,6 @@ out
 *.tsbuildinfo
 .DS_Store
 .claude/settings.local.json
+
+# Installed design skills (local tooling, not for deploy)
+.claude/skills/

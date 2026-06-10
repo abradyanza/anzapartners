@@ -1,15 +1,9 @@
-import { DM_Sans, Playfair_Display } from "next/font/google";
-
-export const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-export const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
+// Geist is the documented open-source substitute for both the Linear and Vercel
+// display/text cuts — a precise, quietly confident grotesque. It reads as
+// engineered and institutional, which fits a firm whose thesis is software and
+// technology, and it deliberately avoids the reflex-reject serif/Inter defaults.
+//
+// Shipped via the official `geist` package (Next 14's next/font/google does not
+// carry Geist). Exposes the CSS vars --font-geist-sans / --font-geist-mono.
+export { GeistSans } from "geist/font/sans";
+export { GeistMono } from "geist/font/mono";

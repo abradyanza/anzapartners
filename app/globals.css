@@ -15,30 +15,92 @@
   }
 
   body {
-    @apply bg-white text-navy font-sans;
+    @apply bg-canvas text-ink font-sans;
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
-    letter-spacing: -0.01em;
+  /* Single typographic voice: display through body is Geist, separated by
+     weight and aggressive negative tracking (the Linear/Vercel signature),
+     not by a second family. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans;
+    letter-spacing: -0.02em;
   }
 
   ::selection {
-    @apply bg-navy text-white;
+    background: theme("colors.accent.DEFAULT");
+    color: theme("colors.canvas");
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer utilities {
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16;
+    @apply mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16;
   }
 
+  /* Fluid section rhythm — generous separations that breathe on larger
+     viewports (impeccable layout: vary rhythm, don't make every gap equal). */
   .section-y {
-    @apply py-24 md:py-32;
+    padding-top: clamp(5.5rem, 11vw, 11rem);
+    padding-bottom: clamp(5.5rem, 11vw, 11rem);
   }
 
-  .eyebrow {
-    @apply text-xs font-medium uppercase tracking-widest text-steel;
+  /* Fluid display scale, ≥1.25 ratio between steps. */
+  .display-1 {
+    font-size: clamp(2.75rem, 7vw, 6rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+  }
+  .display-2 {
+    font-size: clamp(2.1rem, 4.6vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+  }
+  .display-3 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+  }
+
+  /* The sparse mono label — a deliberate, named system used at most a few
+     times across the whole page, never as a per-section kicker. */
+  .meta {
+    @apply font-mono text-[11px] uppercase tracking-[0.22em] text-ink-subtle;
+  }
+
+  .hairline {
+    @apply border-line;
+  }
+
+  /* Film-grain overlay for cinematic texture. Sits above the canvas, below
+     content; pointer-events none. Freezes under reduced-motion via base rule. */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grain-shift 8s steps(6) infinite;
   }
 }

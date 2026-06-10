@@ -33,8 +33,8 @@ const ROLES: Role[] = [
 ];
 
 const inputClass =
-  "w-full bg-transparent border-b border-slate-300 py-3 text-navy placeholder-silver focus:border-steel focus:outline-none transition-colors";
-const labelClass = "block text-xs font-medium uppercase tracking-widest text-steel mb-1";
+  "w-full rounded-md bg-surface border border-line px-4 py-3 text-ink placeholder-ink-faint focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/50 transition-colors";
+const labelClass = "block text-xs font-medium tracking-tight text-ink-subtle mb-2";
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(INITIAL_STATE);
@@ -202,7 +202,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={submitting}
-            className="group inline-flex items-center gap-3 bg-navy text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-steel transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="group inline-flex items-center gap-3 rounded-md bg-ink text-canvas px-8 py-4 text-sm font-medium tracking-tight hover:bg-white transition-colors active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
           >
             <span>{submitting ? "Sending…" : "Send Message"}</span>
             <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -219,7 +219,7 @@ export default function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-navy text-white px-6 py-4 text-sm border border-steel"
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 rounded-md bg-surface-2 text-ink px-6 py-4 text-sm border border-line-strong shadow-xl"
           >
             {toast}
           </motion.div>

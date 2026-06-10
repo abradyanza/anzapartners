@@ -25,7 +25,7 @@ export default function Headshot({ initials, src, name, size = "lg" }: HeadshotP
 
   if (src) {
     return (
-      <div className={`${s.box} relative rounded-full overflow-hidden bg-light flex-shrink-0`}>
+      <div className={`${s.box} relative rounded-full overflow-hidden bg-surface-2 ring-1 ring-line flex-shrink-0`}>
         <Image
           src={src}
           alt={name ? `Portrait of ${name}` : ""}
@@ -40,7 +40,7 @@ export default function Headshot({ initials, src, name, size = "lg" }: HeadshotP
 
   return (
     <div
-      className={`${s.box} ${s.text} rounded-full bg-navy text-light flex items-center justify-center font-serif select-none flex-shrink-0`}
+      className={`${s.box} ${s.text} rounded-full bg-surface-2 text-ink ring-1 ring-line flex items-center justify-center font-medium select-none flex-shrink-0`}
       aria-hidden="true"
     >
       {initials}

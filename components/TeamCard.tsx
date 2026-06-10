@@ -8,8 +8,8 @@ interface TeamCardProps {
 
 export default function TeamCard({ member }: TeamCardProps) {
   return (
-    <article className="border-t border-slate-200 pt-10">
-      <div className="flex flex-col sm:flex-row sm:items-start gap-8">
+    <article className="border-t border-line pt-10">
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
         <Headshot
           initials={member.initials}
           src={member.headshot}
@@ -17,24 +17,22 @@ export default function TeamCard({ member }: TeamCardProps) {
           size="lg"
         />
 
-        <div className="flex-1 min-w-0">
+        <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <h3 className="font-serif text-3xl md:text-4xl text-navy leading-tight break-words">
-                {member.name}
-              </h3>
-              <p className="mt-1 text-steel text-sm tracking-wide uppercase">
+              <h3 className="display-3 break-words text-ink">{member.name}</h3>
+              <p className="mt-1.5 text-sm font-medium tracking-tight text-accent">
                 {member.title}
               </p>
             </div>
             <LinkedInIcon href={member.linkedin} name={member.name} />
           </div>
 
-          <ul className="mt-6 space-y-4 text-slate text-base leading-relaxed">
+          <ul className="mt-6 space-y-4 leading-relaxed text-ink-muted">
             {member.bio.map((paragraph, i) => (
               <li key={i} className="flex gap-3">
                 <span
-                  className="mt-2 inline-block h-px w-3 bg-steel flex-shrink-0"
+                  className="mt-2.5 inline-block h-px w-3 flex-shrink-0 bg-accent/50"
                   aria-hidden="true"
                 />
                 <span>{paragraph}</span>

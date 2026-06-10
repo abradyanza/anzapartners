@@ -1,52 +1,102 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { type ReactNode } from "react";
+import CinematicBackdrop from "./CinematicBackdrop";
 
 interface HeroProps {
-  heading: ReactNode;
+  /** Animated headline as masked rising lines (used on the home hero). */
+  lines?: ReactNode[];
+  /** Simple static heading (interior pages). */
+  heading?: ReactNode;
+  meta?: string;
   subtext?: ReactNode;
   cta?: ReactNode;
   size?: "full" | "medium" | "short";
+  backdrop?: boolean;
   scrollIndicator?: boolean;
 }
 
 const sizeClasses: Record<NonNullable<HeroProps["size"]>, string> = {
   full: "min-h-dvh",
-  medium: "min-h-[60dvh] md:min-h-[50dvh]",
-  short: "min-h-[55dvh] md:min-h-[40dvh]",
+  medium: "min-h-[64dvh] md:min-h-[58dvh]",
+  short: "min-h-[48dvh] md:min-h-[42dvh]",
 };
 
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 export default function Hero({
+  lines,
   heading,
+  meta,
   subtext,
   cta,
   size = "full",
+  backdrop = false,
   scrollIndicator = false,
 }: HeroProps) {
+  const reduce = useReducedMotion();
+
   return (
     <section
-      className={`relative bg-navy text-white overflow-hidden ${sizeClasses[size]} flex items-center`}
+      className={`relative isolate overflow-hidden bg-canvas ${sizeClasses[size]} ${
+        backdrop ? "grain" : ""
+      } flex items-center`}
     >
-      <DecorativePattern />
+      {backdrop && <CinematicBackdrop />}
 
-      <div className="container-x relative z-10 pt-32 pb-24">
+      {/* Fade the backdrop into the page below so the hero dissolves, not cuts. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 bg-gradient-to-b from-transparent to-canvas"
+      />
+
+      <div className="container-x relative z-10 w-full pt-28 pb-20 md:pt-32">
         <div className="max-w-4xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight"
-          >
-            {heading}
-          </motion.h1>
+          {meta && (
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="meta mb-7 flex items-center gap-3"
+            >
+              <span className="inline-block h-px w-8 bg-accent/60" />
+              {meta}
+            </motion.p>
+          )}
+
+          {lines ? (
+            <h1 className="display-1 text-ink">
+              {lines.map((line, i) => (
+                <span key={i} className="block overflow-hidden pb-[0.08em]">
+                  <motion.span
+                    className="block"
+                    initial={reduce ? false : { y: "110%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.9, delay: 0.12 + i * 0.12, ease: EASE }}
+                  >
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
+            </h1>
+          ) : (
+            <motion.h1
+              initial={reduce ? false : { opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className="display-1 text-ink"
+            >
+              {heading}
+            </motion.h1>
+          )}
 
           {subtext && (
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={reduce ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 max-w-2xl text-lg md:text-xl text-light/85 leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
+              className="mt-8 max-w-xl text-lg leading-relaxed text-ink-muted"
             >
               {subtext}
             </motion.p>
@@ -54,10 +104,10 @@ export default function Hero({
 
           {cta && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={reduce ? false : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-10"
+              transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
+              className="mt-11 flex flex-wrap items-center gap-4"
             >
               {cta}
             </motion.div>
@@ -69,21 +119,21 @@ export default function Hero({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+          transition={{ delay: 1.3, duration: 0.6 }}
+          className="absolute bottom-9 left-1/2 z-10 -translate-x-1/2"
           aria-hidden="true"
         >
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-silver"
+            animate={reduce ? undefined : { y: [0, 7, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-2 text-ink-faint"
           >
-            <span className="eyebrow text-[10px]">Scroll</span>
-            <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+            <span className="meta text-[10px]">Scroll</span>
+            <svg width="13" height="18" viewBox="0 0 13 18" fill="none">
               <path
-                d="M1 8l6 6 6-6"
+                d="M1 7l5.5 5.5L12 7"
                 stroke="currentColor"
-                strokeWidth="1.5"
+                strokeWidth="1.4"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -92,33 +142,5 @@ export default function Hero({
         </motion.div>
       )}
     </section>
-  );
-}
-
-function DecorativePattern() {
-  return (
-    <>
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "96px 96px",
-        }}
-      />
-      <svg
-        aria-hidden="true"
-        className="absolute right-0 top-0 h-full w-1/2 text-steel/15"
-        viewBox="0 0 400 800"
-        fill="none"
-        preserveAspectRatio="xMaxYMid slice"
-      >
-        <line x1="0" y1="120" x2="400" y2="120" stroke="currentColor" strokeWidth="1" />
-        <line x1="40" y1="0" x2="40" y2="800" stroke="currentColor" strokeWidth="1" />
-        <line x1="240" y1="0" x2="240" y2="800" stroke="currentColor" strokeWidth="1" />
-        <line x1="0" y1="640" x2="400" y2="640" stroke="currentColor" strokeWidth="1" />
-      </svg>
-    </>
   );
 }
