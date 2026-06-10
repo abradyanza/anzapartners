@@ -87,7 +87,7 @@ export const ADVISORS: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/matthew-perelman-6b289148/",
     headshot: "/headshots/matt-perelman.avif",
     bio: [
-      "Founder and Current Managing Partner of Garnett Station Partners, a leading consumer, retail, and services investment firm with $2 billion+ assets under management, which is focused on value creation for founder-owned businesses. Since 2013, GSP has invested behind and operated 30+ middle-market businesses as majority owners.",
+      "Founder and Current Managing Partner of Garnett Station Partners, a leading consumer, retail, and services investment firm with $3.5 billion+ assets under management, which is focused on value creation for founder-owned businesses. Since 2013, GSP has invested behind and operated 30+ middle-market businesses as majority owners.",
       "Prior to founding Garnett Station, Matt worked at L Catterton Partners, a leading consumer and retail focused private equity firm with over $30 billion of capital under management. Before L Catterton, Matt worked in the Investment Banking Division of Citigroup, where he executed a number of M&A and Leveraged Finance transactions.",
       "Matt holds an MBA with honors from Harvard Business School where he was selected as an Arthur Rock Center Fellow and a BSBA in Finance from Washington University in St. Louis.",
       "Matt is a Trustee of the Heckscher Foundation for Children and a Board Member of Reading Partners, New York.",
