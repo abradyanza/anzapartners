@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 type LogoVariant = "dark" | "light";
-type LogoSize = "sm" | "md" | "lg" | "xl";
+type LogoSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 interface LogoProps {
   variant?: LogoVariant;
@@ -20,6 +20,10 @@ interface LogoProps {
 // next/image width/height classes fighting the intrinsic size on mobile.
 
 const sizeMap: Record<LogoSize, { container: string; imgSizes: string }> = {
+  xs: {
+    container: "w-[82px] h-[59px] md:w-[96px] md:h-[69px]",
+    imgSizes: "(min-width: 768px) 96px, 82px",
+  },
   sm: {
     container: "w-[100px] h-[72px] md:w-[120px] md:h-[86px]",
     imgSizes: "(min-width: 768px) 120px, 100px",

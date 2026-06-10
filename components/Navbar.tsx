@@ -52,7 +52,7 @@ export default function Navbar() {
         }`}
       >
         <div className="container-x flex h-24 items-center justify-between">
-          <Logo asLink ariaLabel="Anza Partners — Home" size="sm" priority variant="light" />
+          <Logo asLink ariaLabel="Anza Partners — Home" size="xs" priority variant="light" />
 
           <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
             {NAV_LINKS.map((link) => {

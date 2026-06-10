@@ -60,7 +60,6 @@ export default function HomePage() {
         size="full"
         backdrop
         scrollIndicator
-        meta="Private Investment Firm"
         lines={[
           "Building exceptional",
           <span key="l2">
